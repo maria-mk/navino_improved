@@ -1,26 +1,36 @@
 .filter_text_button {
-    border: none;
+    border: 1px solid var(--color-border);
     outline: none;
-    background-color: var(--color-background);
-    color: var(--color-accent);
-    width: 127px;
-    height: 31px;
-    padding: 0;
-    display: flex;
+    background: #FFFFFF;
+    color: var(--color-text-muted);
+    width: auto;
+    height: 26px;
+    padding: 0 10px;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
-    border-radius: 40px;
+    border-radius: 6px;
     text-align: center;
-    box-shadow: 0 20px 50px 0 rgba(0, 0, 0, 0.25);
-    font-size: var(--typography-fieldtext);
-    line-height: var(--typography-fieldtext-line-height);
-    font-weight: var(--typography-heading-weight);
+    box-shadow: none;
+    font-size: 11px;
+    line-height: 1;
+    font-weight: 500;
     cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.15s;
+    font-family: var(--font-family);
+}
+
+.filter_text_button:hover {
+    background: var(--color-surface-2);
+    color: var(--color-text);
+    border-color: #C8BEB8;
 }
 
 .filter_text_button.filter_button--color-active {
-    background-color: var(--color-active-button);
-    border: 2px solid var(--color-darkstroke);
+    background: rgba(139,38,53,0.08);
+    border-color: var(--color-wine);
+    color: var(--color-wine);
+    font-weight: 600;
 }
-

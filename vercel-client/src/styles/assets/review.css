@@ -1,162 +1,146 @@
 .reviews-section {
-    display: flex !important; /* Принудительно включаем flex */
+    display: flex !important;
     flex-direction: row;
-    gap: 20px;
+    gap: 24px;
+    margin-bottom: 60px;
 }
 
 .reviews-list {
-    flex: 1; /* Занимает больше места */
+    flex: 1;
     margin: 0;
-    padding-right: 20px; /* Отступ справа для разделения */
-    max-width: 640px;
+    max-width: 600px;
+    list-style: none;
+    padding: 0;
 }
 
 .reviews-list .review-item {
-    margin-bottom: 32px; /* Расстояние между review-item */
-    max-width: 640px; /* Максимальная ширина review-item */
-    padding: 16px; /* Отступы внутри review-item */
-    background-color: var(--color-layout);
-    color: var(--color-accent);
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    margin-bottom: 12px;
+    padding: 18px 22px;
+    background: #FFFFFF;
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    color: var(--color-text);
 }
 
-.reviews-list .review-item > ul > li {
-    margin-bottom: 20px; /* Расстояние между элементами внутри review-item */
+.reviews-list .review-item > ul {
+    list-style: none;
+    padding: 0; margin: 0;
 }
 
-.reviews-list .review-item > ul > li:last-child {
-    margin-bottom: 0; /* Убираем отступ у последнего элемента */
+.reviews-list .review-item > ul > li { margin-bottom: 8px; }
+.reviews-list .review-item > ul > li:last-child { margin-bottom: 0; }
+
+.review-author h5 { color: var(--color-text); font-size: 13px; }
+
+.review-rating h5 { color: var(--color-gold); font-size: 13px; }
+
+.review-text { color: var(--color-text-muted); font-size: 13px; line-height: 1.6; }
+
+.no-reviews-item h5 {
+    color: var(--color-text-muted) !important;
+    font-size: 14px;
+    line-height: 1.6;
 }
 
-.review-author {
-    font-size: var(--typography-h5);
-    font-weight: var(--typography-heading-weight);
-    line-height: var(--typography-h5-line-height);
-}
-
-.reviews-list .review-item:last-child {
-    margin-bottom: 0; /* Убираем отступ у последнего элемента */
-}
-
+/* Leave review form */
 .leave-review {
-    flex: 0.5;
-    border-left: 1px solid #ddd;
-    padding-left: 20px;
-    background-color: var(--color-layout);
-    color: var(--color-accent);
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-    padding: 16px;
-}
-
-/* Добавляем новые стили */
-.leave-review ul li {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin-bottom: 16px;
-}
-
-.leave-review input,
-.leave-review textarea {
-    width: 100%;
-    padding: 8px;
-}
-
-.leave-review textarea {
-    min-height: 100px;
-    resize: vertical;
+    flex: 0 0 360px;
+    background: #FFFFFF;
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 24px;
+    color: var(--color-text);
 }
 
 .leave-review h5 {
-    margin-bottom: 25px;
+    color: var(--color-wine);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
 }
 
+.leave-review ul { list-style: none; padding: 0; margin: 0; }
+
+.leave-review ul li {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 14px;
+}
+
+.leave-review label {
+    font-size: 10px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    font-weight: 600;
+}
+
+/* Star rating */
 .star-rating {
-    direction: rtl; /* Звезды выравниваются справа налево для естественного поведения */
+    direction: rtl;
     display: inline-flex;
-    gap: 5px;
-    align-self: flex-start; /* Выравнивание по левому краю */
+    gap: 3px;
+    align-self: flex-start;
 }
 
-.star-rating input[type="radio"] {
-    display: none; /* Скрываем радио-кнопки */
-}
+.star-rating input[type="radio"] { display: none; }
 
 .star-rating label {
-    font-size: 30px;
-    color: #ccc; /* Неактивные звезды */
+    font-size: 26px;
+    color: var(--color-border);
     cursor: pointer;
-    transition: color 0.2s;
+    transition: color 0.15s;
+    text-transform: none;
+    letter-spacing: 0;
 }
 
-.star-rating input[type="radio"]:checked ~ label {
-    color: var(--color-accent); /* Выбранные звезды */
-}
-
+.star-rating input[type="radio"]:checked ~ label { color: var(--color-gold); }
 .star-rating label:hover,
-.star-rating label:hover ~ label {
-    color: var(--color-accent); /* Подсветка звёзд при наведении */
-}
+.star-rating label:hover ~ label { color: var(--color-gold); }
 
-.send__button {
-    width: 150px;                                        
-    height: 32px;                                     
-    background-color: var(--color-accent);                
-    color: var(--color-background);                       
-    border: none;                                        
-    border-radius: 4px;                                   
-    cursor: pointer;                                      
-    font-size: var(--typography-button-medium);           
-    line-height: var(--typography-button-medium-line-height); 
-    transition: background-color 0.3s ease;              
-    box-sizing: border-box;                             
-    text-align: center;
-    margin-left: auto;
-    display: block;
-}
-
-.send__button:hover {
-    background-color: var(--color-hover-field);
-}
-
-.send__button:focus {
-    outline: none;
-}
-
-.send__button::after {
-    content: '';
-    width: 16px;
-    height: 16px;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    flex-shrink: 0;
-}
-
+/* Textarea */
 .leave-review textarea {
-    width: 478px;
-    height: 266px;
-    border-radius: 10px;
-    padding: 8px;
+    width: 100%;
+    height: 140px;
+    background: var(--color-surface-2);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 10px 12px;
     resize: none;
-    border: 2px solid transparent;
-    font-size: var(--typography-fieldtext);
-    line-height: var(--typography-fieldtext-line-height);
-    font-family: 'Maven Pro';
-    color: var(--color-accent);
-    transition: border-color 0.3s ease;
+    color: var(--color-text);
     font-family: var(--font-family);
-}
-
-.leave-review textarea:focus {
+    font-size: 13px;
+    line-height: 1.6;
     outline: none;
-    border-color: var(--color-accent);
+    transition: border-color 0.2s;
+    caret-color: var(--color-wine);
 }
+.leave-review textarea:focus { border-color: var(--color-wine); }
+.leave-review textarea::placeholder { color: var(--color-text-muted); }
 
-.leave-review textarea::placeholder {
+/* Send button */
+.send__button {
+    width: 100%;
+    height: 40px;
+    background: var(--color-wine);
+    color: #FFFFFF;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 11px;
     font-family: var(--font-family);
-    font-size: var(--typography-fieldtext);
-    line-height: var(--typography-fieldtext-line-height);
-    color: var(--color-text-secondary);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: background 0.18s;
 }
+.send__button:hover { background: var(--color-wine-hover); }
+.send__button:focus { outline: none; }
 
+@media (max-width: 768px) {
+    .reviews-section { flex-direction: column; }
+    .leave-review { flex: none; width: 100%; }
+    .reviews-list { max-width: 100%; }
+}

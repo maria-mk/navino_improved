@@ -1,23 +1,17 @@
-var expanded = false;
+import { toggleColor, toggleSugar, toggleType, setPriceRange } from './state.js';
 
-// Функция для отображения или скрытия выпадающего списка чекбоксов
-function showCheckboxes() {
-    const checkboxes = document.getElementById("checkboxes");
-    if (!expanded) {
-        checkboxes.style.display = "block";
-        expanded = true;
-    } else {
-        checkboxes.style.display = "none";
-        expanded = false;
-    }
-}
+let dropdownExpanded = false;
 
-// генерация фильтров
+const showCheckboxes = () => {
+    const checkboxes = document.getElementById('checkboxes');
+    if (!checkboxes) return;
+    dropdownExpanded = !dropdownExpanded;
+    checkboxes.style.display = dropdownExpanded ? 'block' : 'none';
+};
+
 const renderFilters = () => {
     const container = document.getElementById('filter-container');
-    if (!container) {
-        throw new Error('#filter-container not found');
-    }
+    if (!container) throw new Error('#filter-container not found');
 
     container.innerHTML = `
         <ul>
@@ -35,14 +29,11 @@ const renderFilters = () => {
                         </div>
                         <div id="checkboxes">
                             ${['Перекресток', 'Ароматный Мир', 'Лента', 'Красное и Белое', 'ВинЛаб', 'Пятерочка', 'Дикси']
-                                .map(
-                                    (store, index) => `
-                                    <label for="store-${index}">
-                                        <input type="checkbox" id="store-${index}" />${store}
+                                .map((store, i) => `
+                                    <label for="store-${i}">
+                                        <input type="checkbox" id="store-${i}"> ${store}
                                     </label>
-                                `
-                                )
-                                .join('')}
+                                `).join('')}
                         </div>
                     </div>
                 </form>
@@ -52,8 +43,8 @@ const renderFilters = () => {
             </li>
             <li>
                 <div class="price-range">
-                    <input class="filter_number_button" type="number" placeholder="ОТ">
-                    <input class="filter_number_button" type="number" placeholder="ДО">
+                    <input class="filter_number_button" type="number" id="price-min" placeholder="ОТ">
+                    <input class="filter_number_button" type="number" id="price-max" placeholder="ДО">
                 </div>
             </li>
             <li>
@@ -71,7 +62,7 @@ const renderFilters = () => {
             <li>
                 <div class="wine-type">
                     ${['Тихое', 'Игристое', 'Крепленое', 'Десертное']
-                        .map(type => `<button class="filter_text_button">${type}</button>`)
+                        .map(t => `<button class="filter_text_button" data-filter="type" data-value="${t}">${t}</button>`)
                         .join('')}
                 </div>
             </li>
@@ -81,7 +72,7 @@ const renderFilters = () => {
             <li>
                 <div class="wine-color">
                     ${['Белое', 'Красное', 'Розовое', 'Оранжевое']
-                        .map(color => `<button class="filter_text_button">${color}</button>`)
+                        .map(c => `<button class="filter_text_button" data-filter="color" data-value="${c}">${c}</button>`)
                         .join('')}
                 </div>
             </li>
@@ -91,7 +82,7 @@ const renderFilters = () => {
             <li>
                 <div class="sugar-content">
                     ${['Сухое', 'Полусухое', 'Полусладкое', 'Сладкое']
-                        .map(sugar => `<button class="filter_text_button">${sugar}</button>`)
+                        .map(s => `<button class="filter_text_button" data-filter="sugar" data-value="${s}">${s}</button>`)
                         .join('')}
                 </div>
             </li>
@@ -99,29 +90,41 @@ const renderFilters = () => {
     `;
 };
 
-
 const initializeEventHandlers = () => {
-    // Добавляем обработчик на selectBox
     const selectBox = document.querySelector('.selectBox');
-    if (selectBox) {
-        selectBox.addEventListener('click', showCheckboxes);
-    }
-
+    if (selectBox) selectBox.addEventListener('click', showCheckboxes);
 
     const filterContainer = document.getElementById('filter-container');
-    if (filterContainer) {
-        filterContainer.addEventListener('click', function (event) {
-            if (event.target.classList.contains('filter_text_button')) {
-                console.log('Кнопка нажата:', event.target.textContent); 
-                event.target.classList.toggle('filter_button--color-active'); 
-                console.log('Текущие классы:', event.target.className); 
-            }
-        });
-    }
+    if (!filterContainer) return;
+
+    filterContainer.addEventListener('click', (e) => {
+        const btn = e.target.closest('.filter_text_button');
+        if (!btn) return;
+
+        btn.classList.toggle('filter_button--color-active');
+        const value  = btn.dataset.value;
+        const filter = btn.dataset.filter;
+
+        if (filter === 'color') toggleColor(value);
+        else if (filter === 'type') toggleType(value);
+        else if (filter === 'sugar') toggleSugar(value);
+    });
+
+    const priceMin = document.getElementById('price-min');
+    const priceMax = document.getElementById('price-max');
+
+    const applyPrice = () => {
+        setPriceRange(
+            priceMin?.value ?? '',
+            priceMax?.value ?? '',
+        );
+    };
+
+    priceMin?.addEventListener('change', applyPrice);
+    priceMax?.addEventListener('change', applyPrice);
 };
 
-
-document.addEventListener('DOMContentLoaded', function () {
-    renderFilters(); // Генерируем фильтры
-    initializeEventHandlers(); // Подключаем обработчики событий
+document.addEventListener('DOMContentLoaded', () => {
+    renderFilters();
+    initializeEventHandlers();
 });

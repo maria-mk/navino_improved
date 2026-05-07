@@ -1,0 +1,527 @@
+.section-page {
+    padding: 0;
+    width: 100%;
+}
+
+.section-page__header {
+    margin-bottom: 28px;
+}
+
+.section-page__header h2 {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-text);
+    margin-bottom: 6px;
+}
+
+.section-page__header p {
+    font-size: 13px;
+    color: var(--color-text-muted);
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* ─── Degustation grid ─── */
+.events-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+@media (max-width: 1100px) { .events-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 680px)  { .events-grid { grid-template-columns: 1fr; } }
+
+.event-card {
+    background: #FFFFFF;
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.event-card:hover {
+    box-shadow: 0 8px 24px rgba(28,20,16,0.1);
+    transform: translateY(-3px);
+}
+
+.event-card__date {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-wine);
+}
+
+.event-card__title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--color-text);
+    line-height: 1.4;
+    margin: 0;
+}
+
+.event-card__desc {
+    font-size: 12px;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    margin: 0;
+    flex: 1;
+}
+
+.event-card__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+.event-card__tag {
+    background: rgba(139,38,53,0.06);
+    color: var(--color-wine);
+    border: 1px solid rgba(139,38,53,0.15);
+    border-radius: 20px;
+    padding: 2px 8px;
+    font-size: 10px;
+    font-weight: 600;
+    font-family: var(--font-family);
+}
+
+.event-card__footer { margin-top: auto; }
+
+.event-card__meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.event-card__place {
+    font-size: 11px;
+    color: var(--color-text-muted);
+}
+
+.event-card__spots {
+    font-size: 10px;
+    color: var(--color-text-muted);
+    background: var(--color-surface-2);
+    padding: 2px 8px;
+    border-radius: 20px;
+}
+
+.event-card__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.event-card__price {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--color-text);
+}
+
+.event-card__btn {
+    background: var(--color-wine);
+    color: #FFFFFF;
+    border: none;
+    border-radius: 7px;
+    padding: 8px 16px;
+    font-size: 11px;
+    font-family: var(--font-family);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.18s;
+}
+
+.event-card__btn:hover { background: var(--color-wine-hover); }
+
+/* ─── Learning grid ─── */
+.courses-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+@media (max-width: 1100px) { .courses-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 680px)  { .courses-grid { grid-template-columns: 1fr; } }
+
+.course-card {
+    background: #FFFFFF;
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.course-card:hover {
+    box-shadow: 0 8px 24px rgba(28,20,16,0.1);
+    transform: translateY(-3px);
+}
+
+.course-card__icon {
+    font-size: 28px;
+    line-height: 1;
+}
+
+.course-card__level {
+    align-self: flex-start;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-family: var(--font-family);
+}
+
+.course-card__title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--color-text);
+    line-height: 1.4;
+    margin: 0;
+}
+
+.course-card__desc {
+    font-size: 12px;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    margin: 0;
+    flex: 1;
+}
+
+.course-card__footer { margin-top: auto; }
+
+.course-card__duration {
+    display: block;
+    font-size: 11px;
+    color: var(--color-text-muted);
+    margin-bottom: 12px;
+}
+
+.course-card__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.course-card__price {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--color-text);
+}
+
+.course-card__btn {
+    background: transparent;
+    color: var(--color-wine);
+    border: 1px solid rgba(139,38,53,0.3);
+    border-radius: 7px;
+    padding: 8px 16px;
+    font-size: 11px;
+    font-family: var(--font-family);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.18s;
+}
+
+.course-card__btn:hover {
+    background: var(--color-wine);
+    color: #FFFFFF;
+    border-color: var(--color-wine);
+}
+
+/* Full-width wrapper for section pages */
+.products[style*="display: block"] {
+    padding: 20px;
+}
+
+/* ─── Auth gate ─── */
+.auth-gate {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 24px;
+    text-align: center;
+}
+
+.auth-gate__icon { font-size: 40px; margin-bottom: 16px; }
+
+.auth-gate__title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: 10px;
+}
+
+.auth-gate__desc {
+    font-size: 13px;
+    color: var(--color-text-muted);
+    line-height: 1.7;
+    margin-bottom: 24px;
+    max-width: 380px;
+}
+
+.auth-gate__btn {
+    background: var(--color-wine);
+    color: #FFFFFF;
+    border: none;
+    border-radius: 8px;
+    padding: 11px 28px;
+    font-size: 12px;
+    font-family: var(--font-family);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.18s;
+}
+.auth-gate__btn:hover { background: var(--color-wine-hover); }
+
+/* ─── Personal account (ЛК) ─── */
+.lk-page { display: flex; flex-direction: column; gap: 28px; }
+
+.lk-profile {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: #FFFFFF;
+    border: 1px solid var(--color-border);
+    border-radius: 14px;
+    padding: 24px 28px;
+}
+
+.lk-profile__avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--color-wine);
+    color: #FFFFFF;
+    font-size: 20px;
+    font-weight: 700;
+    font-family: var(--font-family);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.lk-profile__info { flex: 1; }
+
+.lk-profile__name {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: 4px;
+}
+
+.lk-profile__email {
+    font-size: 12px;
+    color: var(--color-text-muted);
+    margin-bottom: 2px;
+}
+
+.lk-profile__since {
+    font-size: 11px;
+    color: var(--color-text-muted);
+    letter-spacing: 0.02em;
+}
+
+.lk-profile__level { text-align: right; }
+
+.lk-profile__level-badge {
+    display: inline-block;
+    background: rgba(155,110,40,0.1);
+    color: var(--color-gold);
+    border: 1px solid rgba(155,110,40,0.25);
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    font-family: var(--font-family);
+}
+
+.lk-profile__level-hint {
+    font-size: 10px;
+    color: var(--color-text-muted);
+    margin-top: 6px;
+    letter-spacing: 0.03em;
+}
+
+/* Stats row */
+.lk-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+.lk-stat {
+    background: #FFFFFF;
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 18px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.lk-stat__value {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--color-text);
+    font-family: var(--font-family);
+}
+
+.lk-stat__label {
+    font-size: 10px;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+}
+
+/* Sections inside LK */
+.lk-section__title {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    margin-bottom: 14px;
+}
+
+/* Wine recommendations */
+.lk-wines {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 12px;
+}
+
+@media (max-width: 1200px) { .lk-wines { grid-template-columns: repeat(3, 1fr); } }
+
+.lk-wine-card {
+    background: #FFFFFF;
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    overflow: hidden;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.lk-wine-card:hover {
+    box-shadow: 0 6px 18px rgba(28,20,16,0.1);
+    transform: translateY(-2px);
+}
+
+.lk-wine-card__img {
+    width: 100%;
+    height: 100px;
+    object-fit: contain;
+    background: linear-gradient(160deg, #F9F4EF 0%, #EDE5DC 100%);
+    padding: 8px;
+}
+
+.lk-wine-card__info { padding: 10px 12px; }
+
+.lk-wine-card__name {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--color-text);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    line-height: 1.4;
+    margin-bottom: 6px;
+}
+
+.lk-wine-card__meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.lk-wine-card__rating {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--color-gold);
+}
+
+.lk-wine-card__price {
+    font-size: 11px;
+    color: var(--color-text-muted);
+}
+
+/* Orders table */
+.lk-orders-wrap {
+    background: #FFFFFF;
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.lk-orders {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-family);
+}
+
+.lk-orders thead tr {
+    background: var(--color-surface-2);
+}
+
+.lk-orders th {
+    padding: 10px 16px;
+    text-align: left;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.lk-orders__row td {
+    padding: 12px 16px;
+    font-size: 12px;
+    color: var(--color-text-muted);
+    border-bottom: 1px solid var(--color-border);
+    vertical-align: middle;
+}
+
+.lk-orders__row:last-child td { border-bottom: none; }
+.lk-orders__row:hover td { background: #FAFAF8; }
+
+.lk-orders__items {
+    color: var(--color-text) !important;
+    max-width: 340px;
+}
+
+.lk-orders__status {
+    background: rgba(139,38,53,0.07);
+    color: var(--color-wine);
+    border-radius: 20px;
+    padding: 3px 10px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+    .lk-stats { grid-template-columns: repeat(2, 1fr); }
+    .lk-profile { flex-wrap: wrap; }
+}

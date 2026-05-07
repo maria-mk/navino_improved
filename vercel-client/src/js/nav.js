@@ -1,15 +1,47 @@
-function loadNav() {
-    const navHTML = `
-        <div class="container nav-container">
-            <ul>
-                <li><button class="button"><h4><a href="#">ПЕРСОНАЛЬНЫЕ ПОДБОРКИ</a></h4></button></li>
-                <li><button class="button button--color-active"><h4><a href="#">ВЫГОДНЫЕ ПРЕДЛОЖЕНИЯ</a></h4></button></li>
-                <li><button class="button"><h4><a href="#">ДЕГУСТАЦИИ</a></h4></button></li>
-                <li><button class="button"><h4><a href="#">ОБУЧЕНИЕ</a></h4></button></li>
-            </ul>
-        </div>
-    `;
-    document.getElementById('nav-container').innerHTML = navHTML; // Вставляем навигацию в контейнер
+const SECTIONS = [
+    { id: 'personal',     label: 'Персональные подборки' },
+    { id: 'offers',       label: 'Выгодные предложения' },
+    { id: 'degustation',  label: 'Дегустации' },
+    { id: 'learning',     label: 'Обучение' },
+];
+
+const isIndexPage = () => {
+    const p = window.location.pathname;
+    return p.endsWith('index.html') || p === '/' || p.endsWith('/');
+};
+
+let activeSection = new URLSearchParams(window.location.search).get('section') || 'offers';
+
+function setActive(id) {
+    if (!isIndexPage()) {
+        window.location.href = `index.html?section=${id}`;
+        return;
+    }
+    activeSection = id;
+    document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.classList.toggle('button--color-active', btn.dataset.section === id);
+    });
+    document.dispatchEvent(new CustomEvent('navino:section-changed', { detail: { section: id } }));
 }
 
-loadNav(); // Вызываем функцию для загрузки навигации
+function loadNav() {
+    const items = SECTIONS.map(s => `
+        <li>
+            <button class="button nav-btn${s.id === activeSection ? ' button--color-active' : ''}" data-section="${s.id}">
+                ${s.label}
+            </button>
+        </li>
+    `).join('');
+
+    document.getElementById('nav-container').innerHTML = `
+        <div class="container nav-container">
+            <ul>${items}</ul>
+        </div>
+    `;
+
+    document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.addEventListener('click', () => setActive(btn.dataset.section));
+    });
+}
+
+loadNav();

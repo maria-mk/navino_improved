@@ -1,142 +1,263 @@
 .product-card {
     display: flex;
-    align-items: flex-start;
-    background-color: transparent;
-    border: none;
-    border-radius: 8px;
-    padding: 16px;
-    margin-bottom: 20px; 
-    width: 100%;
+    flex-direction: column;
+    background: #FFFFFF;
+    border: 1px solid var(--color-border);
+    border-radius: 14px;
+    overflow: hidden;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    box-shadow: 0 2px 8px rgba(28,20,16,0.06);
 }
 
-.product-card__image-container {
-    flex: 0 0 auto;
-    margin-right: 16px;
+.product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(28,20,16,0.12), 0 0 0 1px rgba(139,38,53,0.15);
+}
+
+/* ── Image area ── */
+.product-card__image-wrap {
+    position: relative;
+    width: 100%;
+    height: 180px;
+    background: linear-gradient(160deg, #F9F4EF 0%, #EDE5DC 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
 }
 
 .product-card__image {
-    display: block;
-    width: 270px;
-    height: 255px;
+    height: 148px;
+    width: auto;
+    max-width: 65%;
     object-fit: contain;
-    border-radius: 4px;
+    display: block;
+    filter: drop-shadow(0 6px 16px rgba(28,20,16,0.16));
+    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.3, 1);
+    position: relative;
+    z-index: 1;
 }
 
+.product-card:hover .product-card__image {
+    transform: scale(1.05) translateY(-5px);
+}
+
+/* Favorite button */
+.product-card__fav {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 32px;
+    height: 32px;
+    background: rgba(255,255,255,0.9);
+    border: 1px solid var(--color-border);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    z-index: 2;
+    backdrop-filter: blur(4px);
+    transition: background 0.2s, transform 0.15s, border-color 0.2s;
+    color: var(--color-text-muted);
+}
+
+.product-card__fav svg { width: 14px; height: 14px; }
+
+.product-card__fav:hover {
+    background: #FFF0F2;
+    border-color: rgba(220,60,80,0.3);
+    transform: scale(1.1);
+    color: #DC3C50;
+}
+
+.product-card__fav--active {
+    color: #DC3C50;
+    background: #FFF0F2;
+    border-color: rgba(220,60,80,0.3);
+}
+
+/* ── Text content ── */
 .product-card__content {
     flex: 1;
     display: flex;
     flex-direction: column;
-    width: 100%; 
+    padding: 14px 16px 16px;
 }
 
 .product-card__title {
-    font-size: var(--typography-h5);
-    line-height: var(--typography-h5-line-height);
-    font-weight: var(--typography-h5-weight);
-    color: var(--color-accent);
-    margin-bottom: 23px;
+    font-size: 12px;
+    line-height: 1.5;
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: 8px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
 }
 
 .product-card__rating {
-    font-size: var(--typography-h5);
-    line-height: var(--typography-h5-line-height);
-    font-weight: var(--typography-h5-weight);
-    color: var(--color-accent);
-    margin-bottom: 29px;
     display: flex;
     align-items: center;
+    gap: 5px;
+    margin-bottom: 10px;
 }
 
-.product-card__rating-star {
-    margin-right: 10px; /* Изменено с 5px на 10px */
-    font-size: 1.2em;
-    color: var(--color-accent);
-}
-
-.product-card__rating-value {
+.product-card__star {
+    font-size: 13px;
+    color: var(--color-gold);
     line-height: 1;
 }
 
-.product-card__characteristics {
+.product-card__rating-value {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--color-gold);
+    line-height: 1;
+}
+
+/* ── Tags ── */
+.product-card__tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 31px;
-    margin-bottom: 91px;
+    gap: 4px;
+    margin-bottom: 14px;
 }
 
-.product-card__characteristic {
-    border: none;
-    outline: none;
-    background-color: var(--color-background);
-    color: var(--color-accent);
-    width: 127px;
-    height: 31px;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-sizing: border-box;
-    border-radius: 40px;
-    text-align: center;
-    box-shadow: 0 20px 50px 0 rgba(0, 0, 0, 0.25);
-    font-size: var(--typography-fieldtext);
-    line-height: var(--typography-fieldtext-line-height);
+.product-card__tag {
+    background: rgba(139,38,53,0.06);
+    color: var(--color-wine);
+    border: 1px solid rgba(139,38,53,0.15);
+    border-radius: 20px;
+    padding: 2px 9px;
+    font-size: 10px;
+    font-weight: 600;
     font-family: var(--font-family);
+    letter-spacing: 0.03em;
 }
 
-.product-card__price-button-container {
+/* ── Footer ── */
+.product-card__footer {
+    margin-top: auto;
     display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    width: 100%;
-    flex-wrap: nowrap;} 
+    flex-direction: column;
+    gap: 10px;
+}
 
 .product-card__price {
-    font-size: var(--typography-h5);
-    line-height: var(--typography-h5-line-height);
-    font-weight: var(--typography-h5-weight);
-    color: var(--color-accent);
-    white-space: nowrap;
-    margin-right: 135px;
+    font-size: 13px;
+    color: var(--color-text);
+    font-weight: 400;
+    margin: 0;
+    letter-spacing: 0;
+    line-height: 1.3;
 }
 
-.product-card__button {
-    width: 150px;
-    height: 32px;
-    background-color: var(--color-accent);
-    color: var(--color-background);
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: var(--typography-button-medium);
-    line-height: var(--typography-button-medium-line-height);
-    transition: background-color 0.3s ease;
-    box-sizing: border-box;
+.product-card__price strong {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--color-text);
+    display: inline;
+    letter-spacing: 0;
+    text-transform: none;
+}
+
+.product-card__actions {
     display: flex;
+    gap: 8px;
+}
+
+.product-card__btn {
+    height: 36px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 11px;
+    font-family: var(--font-family);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    transition: all 0.18s;
+    display: inline-flex;
     align-items: center;
-    justify-content: flex-start;
-    padding: 0 13px;
-    gap: 13px;
-    flex-shrink: 0;
+    justify-content: center;
+    gap: 5px;
+    padding: 0 14px;
     text-decoration: none;
+    white-space: nowrap;
+    text-transform: uppercase;
+}
+
+.product-card__btn:active { transform: scale(0.97); }
+
+/* "Подробнее" — вторичная кнопка */
+.product-card__btn--primary {
+    background: transparent;
+    color: var(--color-text-muted);
+    border: 1px solid var(--color-border);
+    flex: 0 0 auto;
+}
+.product-card__btn--primary:hover {
+    background: var(--color-surface-2);
+    color: var(--color-text);
+    border-color: #C8BEB8;
+}
+
+/* "В корзину" — акцентная кнопка */
+.product-card__btn--cart {
+    background: var(--color-wine);
+    color: #FFFFFF;
+    border: none;
+    flex: 1;
+}
+.product-card__btn--cart:hover { background: var(--color-wine-hover); }
+
+.product-card__compare {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 10px;
+    font-family: var(--font-family);
+    color: var(--color-text-muted);
+    padding: 0;
+    text-align: left;
+    transition: color 0.18s;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+.product-card__compare:hover { color: var(--color-wine); }
+.product-card__compare--active { color: var(--color-wine); font-weight: 600; }
+
+/* ── States ── */
+.products__loading,
+.products__error {
+    padding: 80px 20px;
+    text-align: center;
+    color: var(--color-text-muted);
+    font-size: 15px;
+}
+
+.products__empty {
+    padding: 80px 20px;
     text-align: center;
 }
-
-.product-card__button:hover {
-    background-color: var(--color-hover-field);
+.products__empty p {
+    font-size: 15px;
+    color: var(--color-text-muted);
+    margin-bottom: 20px;
 }
 
-.product-card__button:focus {
-    outline: none;
+.products__reset {
+    background: var(--color-wine);
+    color: #FFFFFF;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 28px;
+    font-size: 12px;
+    font-family: var(--font-family);
+    font-weight: 600;
+    cursor: pointer;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: background 0.18s;
 }
-
-.product-card__button::after {
-    content: '';
-    width: 16px;
-    height: 16px;
-    background-image: url('./icons/arrow.svg');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    flex-shrink: 0;
-}
+.products__reset:hover { background: var(--color-wine-hover); }

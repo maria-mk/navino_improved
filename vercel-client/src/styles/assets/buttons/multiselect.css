@@ -1,31 +1,41 @@
 .multiselect {
-    width: 295px;
-    max-height: 203px;
-    background-color: var(--color-background);
-    font-size: var(--typography-fieldtext);
-    line-height: var(--typography-fieldtext-line-height);
-    box-shadow: 0 20px 50px 0 rgba(0, 0, 0, 0.25);
-    border-radius: 4px;
-    font-family: 'Maven Pro', sans-serif;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    background: transparent;
+    font-size: 12px;
+    font-family: var(--font-family);
     position: relative;
 }
 
 .selectBox {
     position: relative;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    background: #FFFFFF;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: border-color 0.15s;
 }
+
+.selectBox:hover { border-color: #C8BEB8; }
 
 .selectBox select {
     width: 100%;
-    height: 35px;
+    height: 100%;
     font-weight: 500;
     text-align: left;
-    font-size: var(--typography-fieldtext);
-    line-height: var(--typography-fieldtext-line-height);
-    color: var(--color-accent);
+    font-size: 12px;
+    color: var(--color-text-muted);
     border: none;
-    background-color: transparent;
-    font-family: 'Maven Pro', sans-serif;
-    padding-left: 10px; 
+    background: transparent;
+    font-family: var(--font-family);
+    padding-left: 10px;
+    cursor: pointer;
+    outline: none;
+    appearance: none;
 }
 
 .overSelect {
@@ -38,76 +48,65 @@
 
 #checkboxes {
     display: none;
-    border: none;
-    font-family: 'Maven Pro', sans-serif;
-    max-height: 168px;
-    overflow-y: scroll;
+    border: 1px solid var(--color-border);
+    border-top: none;
+    border-radius: 0 0 6px 6px;
+    font-family: var(--font-family);
+    max-height: 180px;
+    overflow-y: auto;
+    background: #FFFFFF;
+    box-shadow: 0 4px 12px rgba(28,20,16,0.08);
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 10;
 }
 
-#checkboxes::-webkit-scrollbar {
-    width: 6px;
-    background-color: transparent;
-}
-
-#checkboxes::-webkit-scrollbar-thumb {
-    border-radius: 3px;
-    height: 20px; /* Уменьшена длина кнопки скролла */
-    width: 3px;
-    background-color: rgba(113, 16, 16, 0.59);
-}
-
-#checkboxes::-webkit-scrollbar-track {
-    border-radius: 3px;
-    background-color: transparent;
-}
+#checkboxes::-webkit-scrollbar { width: 4px; background: transparent; }
+#checkboxes::-webkit-scrollbar-thumb { border-radius: 2px; background: var(--color-border); }
 
 #checkboxes label {
-    font-size: var(--typography-fieldtext);
-    line-height: var(--typography-fieldtext-line-height);
+    font-size: 12px;
     display: flex;
     align-items: center;
-    height: 34px;
-    text-align: left;
-    padding-left: 10px;
-    color: var(--color-accent);
-    font-family: 'Maven Pro', sans-serif;
-    font-weight: normal;
+    height: 32px;
+    padding: 0 10px;
+    color: var(--color-text-muted);
+    font-family: var(--font-family);
+    font-weight: 400;
+    cursor: pointer;
+    transition: background 0.12s;
 }
 
-#checkboxes label:hover {
-    background-color: var(--color-hover-field);
-}
+#checkboxes label:hover { background: var(--color-surface-2); color: var(--color-text); }
 
 #checkboxes input[type="checkbox"] {
     appearance: none;
     -webkit-appearance: none;
-    -moz-appearance: none;
-    width: 24px;
-    height: 24px;
-    border: 1px solid var(--color-accent);
+    width: 14px;
+    height: 14px;
+    border: 1px solid var(--color-border);
     border-radius: 3px;
     outline: none;
     cursor: pointer;
-    margin-right: 10px;
-    vertical-align: middle;
-    background-color: transparent;
+    margin-right: 8px;
+    flex-shrink: 0;
+    background: #FFFFFF;
+    transition: background 0.12s, border-color 0.12s;
 }
 
 #checkboxes input[type="checkbox"]:checked {
-    background-color: var(--color-hover-field);
+    background: var(--color-wine);
+    border-color: var(--color-wine);
     position: relative;
 }
 
 #checkboxes input[type="checkbox"]:checked::after {
-    content: '\2714';
-    font-size: 18px;
+    content: '✓';
+    font-size: 10px;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: var(--color-accent);
-}
-
-#checkboxes label:hover input[type="checkbox"] {
-    background-color: white;
+    color: #FFFFFF;
 }
