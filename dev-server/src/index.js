@@ -96,6 +96,10 @@ app.post('/api/v1/reviews', (request, response) => {
     response.status(201).json(data);
 });
 
-app.listen(port, () => {
-    console.log(`Сервер запущен на http://localhost:${port}`);
-});
+if (process.env.NODE_ENV !== 'production') {
+    app.listen(port, () => {
+        console.log(`Сервер запущен на http://localhost:${port}`);
+    });
+}
+
+module.exports = app;

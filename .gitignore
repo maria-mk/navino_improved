@@ -1,6 +1,7 @@
 node_modules/
 vercel-client/dist/
 vercel-client/.parcel-cache/
+vercel-client/.env
 .env
 .DS_Store
 Thumbs.db

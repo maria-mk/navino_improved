@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:3000/api/v1';
+const API_URL = `${process.env.API_BASE_URL || 'http://localhost:3000'}/api/v1`;
 
 export const getAllProducts = async () => {
     const response = await fetch(`${API_URL}/products`);
