@@ -2,7 +2,7 @@
 
 Доработанная версия проекта [maria-mk/project](https://github.com/maria-mk/project/tree/main), созданная с помощью [Claude Code](https://claude.ai/code) от Anthropic.
 
-🌐 **[Открыть сайт](https://navino-improved-f8i2.vercel.app/)** &nbsp;·&nbsp; [Figma-прототип](https://www.figma.com/design/1CXNcFCyTqHNTctF1GhUAI/Project_%D0%9A%D1%83%D0%B7%D0%BD%D0%B5%D1%86%D0%BE%D0%B2%D0%B0-%D0%9C%D0%B0%D1%80%D0%B8%D1%8F?node-id=2313-18&t=AgsILRwFLAshkjXq-1) &nbsp;·&nbsp; [Оригинальный репозиторий](https://github.com/maria-mk/project/tree/main)
+🌐 **[Открыть сайт](https://navino-improved-f8i2.vercel.app/)** &nbsp;·&nbsp; [Оригинальный репозиторий](https://github.com/maria-mk/project/tree/main)
 
 ---
 
